@@ -128,7 +128,7 @@ L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible d
 
 
 
-## Utiliser RAxML en ligne
+## Optionel: Utiliser RAxML en ligne
 
 Aller sur le site web du [Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/)
 
