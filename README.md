@@ -83,7 +83,7 @@ Le fichier `RAxML_bestTree.test1` contient le résultat (le meilleur arbre). Le 
 Pour visualiser l'arbre phylogénétique, je vous recommande d'ajouter l'extension `.tre` à la fin du fichier d'arbre (`RAxML_bestTree.test1`). Vous pourrez ensuite l'ouvrir dans un logiciel de visualisation d'arbre phylogénétique comme [FigTree](http://tree.bio.ed.ac.uk/software/figtree/).
 
 
-## Analyse 2: Changeons les arbres de départ
+## Analyse 2: Différents arbres de départ
 
 Par défaut, RAxML va utiliser un arbre de parcimonie comme arbre de départ pour l'analyse de maximum de vraisemblance. Pour s'assurer que les résultat ne représente pas un optimum local dans l'espace de tous les arbres possible, il est possible de faire plusieurs analyses à partir de différents abres de départ. Une option pour faire ceci est de faire plusieurs arbres de parcimonie différents en randomisant l'ordre d'addition des espèces dans l'arbre de parcimonie. 
 
@@ -106,7 +106,7 @@ raxml -s rbcl.fasta -d -n test3 -m GTRGAMMA -# 10 -T 2 -p 123
 Les fichiers de sortie seront similaire que ceux avec l'analyse précédente.
 
 
-## Bootstraping 
+## Analyse 3: Bootstraping 
 
 Il est souvent nécessaire d'avoir une estimation de la robustesse des inférences phylogénétiques. Une approche très répandue est d'utiliser une analyse de bootstrap. L'idée est de rééchantillonner les caractères (nucléotides dans le cas de séquences) avec remise pour créer de nouveaux jeus de données. Ces jeux de données sont analysés est on rapporte la fréquence des analyses où l'on trouve tous les groupements possible. Les groupements retrouvés dans un grand nombre d'analyses (> 95%) sont considérés comme étant fortement supportés.
 
@@ -125,15 +125,6 @@ raxml -J MRE -z RAxML_bootstrap.test4 -n test5 -m GTRGAMMA -T 2
 L'option `-z` indique le fichier où se trouvent les arbres de bootstrap. Les résultats seront sauvés dans un fichier nommé 'RAxML_MajorityRuleExtendedConsensusTree.test5'.
 
 L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible de l'ouvrir avec le logiciel [Geneious](https://www.geneious.com). Les valeurs pour chaque groupement peuvent aussi être obtenues en regardant le fichier d'arbre consensus.
-
-
-## Test de topologie
-
-Un des avantages du maximum de vraisemblance est de pouvoir faire des tests de topologies. 
-
-```
-raxml -s rbcl.fasta -g contrainte.tre -n test6 -m GTRGAMMA -T 2 -p 123
-```
 
 
 
