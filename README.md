@@ -114,13 +114,13 @@ raxml -s rbcl.fasta -d -n test3 -m GTRGAMMA -# 10 -T 2 -p 123
 
 Les fichiers de sortie seront similaires à ceux obtanus avec l'analyse précédente.
 
-====
+----
 
 #### Question 2
 
 Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ complètement aléatoires est différent des précédents (test1 et test2)? Qu'est-ce que vous en concluez?
 
-====
+----
 
 
 ## Analyse 3: Bootstraping 
@@ -141,7 +141,7 @@ raxml -J MRE -z RAxML_bootstrap.test4 -n test5 -m GTRGAMMA -T 2
 
 L'option `-z` indique le fichier où se trouvent les arbres de bootstrap. Les résultats seront sauvés dans un fichier nommé 'RAxML_MajorityRuleExtendedConsensusTree.test5'.
 
-L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible de l'ouvrir avec le logiciel [Geneious](https://www.geneious.com). Les valeurs pour chaque groupement peuvent aussi être obtenues en regardant le fichier d'arbre consensus.
+L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible de l'ouvrir avec le logiciel [Geneious](https://www.geneious.com). Les valeurs pour chaque groupement peuvent aussi être obtenues en regardant le fichier d'arbre consensus. Elles se trouvent entre crochets [] suite à chaque groupement.
 
 
 
