@@ -114,13 +114,13 @@ raxml -s rbcl.fasta -d -n test3 -m GTRGAMMA -# 10 -T 2 -p 123
 
 Les fichiers de sortie seront similaires à ceux obtanus avec l'analyse précédente.
 
-----
+====
 
-**Question 2**
+#### Question 2
 
 Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ complètement aléatoires est différent des précédents (test1 et test2)? Qu'est-ce que vous en concluez?
 
-----
+====
 
 
 ## Analyse 3: Bootstraping 
