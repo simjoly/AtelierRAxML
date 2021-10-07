@@ -8,9 +8,9 @@ Atelier d'initiation au logiciel d'analyse phylogénétique RAxML
 
 ## Introduction
 
-Ces dernières années, RAxML est devenu l’outil le plus utilisé pour faire des analyses phylogénétiques en maximum de vraissemblance (ML), étant à la fois robuste, versatile et rapide. C’est **la** référence pour ce type d’analyse et c’est pourquoi il est utilisé dans ce TP.
+Ces dernières années, RAxML est devenu l’outil le plus utilisé pour faire des analyses phylogénétiques en maximum de vraissemblance (ML), étant à la fois robuste, versatile et rapide. C’est **la** référence pour ce type d’analyse et c’est pourquoi il est utilisé dans cet atelier.
 
-RAxML est souvent utilisé via un terminal en ligne de commande. Ce n’est pas particulièrement compliqué, mais il faut se familiariser avec les commandes. Certains outils avec interface graphique existent pour utiliser RAxML, mais ils sont soient payants (e.g., CYPRES) ou soit moins flexibles que l'application en ligne de commande ([Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/)). Pour cette raison, cet atelier va introduire l'utilisation de RAxML en ligne de commande. Pour les intéressés, une section plus bas explique aussi comment l'utiliser sur le site de la [Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/).
+RAxML est normalement utilisé via un terminal en ligne de commande. Ce n’est pas particulièrement compliqué, mais il faut se familiariser avec les commandes (et il y en a beaucoup!). Certains outils avec interface graphique existent pour utiliser RAxML, mais ils sont soient payants (e.g., [CIPRES](https://www.phylo.org/)) ou soit moins flexibles que l'application en ligne de commande ([Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/)). Pour cette raison, cet atelier va introduire l'utilisation de RAxML en ligne de commande. Pour les intéressés, une section plus bas explique aussi comment utiliser RAxML en ligne sur le site de la [Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/).
 
 > Cet atelier est une introduction à RAxML et n'explique pas toutes les options possibles. Avant d'effectuer une analyse pour un travail ou une publication, vous devriez consulter le consulter le [manuel d’utilisation de RAxML](https://cme.h-its.org/exelixis/php/countManualNew.php). Pour plus d'informations, consultez le [site web de RAxML](https://cme.h-its.org/exelixis/web/software/raxml/).
 
@@ -21,20 +21,18 @@ RAxML est souvent utilisé via un terminal en ligne de commande. Ce n’est pas 
 
 ### Logiciel
 
-Comme RAxML est un logiciel en ligne de commande, il est généralement recommandé de compiler le programme sur chaque ordinateur pour s'assurer d'un bon fonctionnement. Comme c'est parfois compliqué de procéder ainsi rapidement dans les systèmes Windows et sur les macOS qui n'ont pas Xcode d'installé, je mets à la disposition des programmes déjà compilés pour ces environnements qui devraient fonctionner.
+Comme RAxML est un logiciel en ligne de commande, il est généralement recommandé de compiler le programme sur chaque ordinateur pour s'assurer d'un bon fonctionnement. Comme il est parfois compliqué de procéder ainsi sur les systèmes d'exploitation Windows et sur les macOS qui n'ont pas Xcode, je mets à la disposition des programmes déjà compilés pour ces environnements qui devraient fonctionner. Les programmes sont dans le dossier `executables`. Je vous conseille de télécharger le programme approprié à votre système d'exploitation et de renommer le programme `raxml` pour faciliter l'utilisation pour l'atelier.
 
 Si vous travaillez sur Linux ou si vous voulez recompiler le programme, veuillez visiter la [page Github de RAxML](https://github.com/stamatak/standard-RAxML) pour le code et les intructions de compilation.
 
 Pour cet exercice, nous allons utiliser la version parallèle (pthreads) de RAxML.
-
-Les exécutables sont dans le dossier `executables`. Je vous conseille de télécharger le programme approprié à votre système et de renommer le programme `raxml` pour faciliter l'utilisation pour l'atelier.
 
 
 ### Données
 
 Il est possible d'utiliser vos propres données pour cet exercices, mais je mets aussi un alignements du gène chloroplastique rbcL de quelques arbres du Québec à votre disposition. Les données nécessaires pour les exercices sont dans le dossier `data`.
 
-Notez que les données pour RAxML doivent idéalement être en format fasta ou PHYLIP. Si vos données sont en format nexus, c'est possible de les convertir avec le logiciel R ou avec [Geneious](https://www.geneious.com).
+Notez que les données de séquences pour RAxML doivent être en format fasta ou PHYLIP. Si vos données sont en format nexus, c'est possible de les convertir avec le logiciel R ou avec [Geneious](https://www.geneious.com).
 
 
 ### Un test
@@ -53,7 +51,7 @@ raxml -h
 ./raxml -h
 ```
 
-L'option `-h` demande à raxml de donner le fichier d'aide et vous devriez le voir à l'écran après avoir tapé la commande. Notez que le './' de la commande sur linux indique à l'ordinateur de chercher le programme dans le dossier actif. Il est possible de mettre le logiciel dans le PATH du système qui permettrait d'ommettre le './'. Pour le reste de l'atelier, je vais l'ommettre pour simplicité, mais n'oubliez pas de toujours l'ajouter au début de la commande pour les utilisateurs mac et linux.
+L'option `-h` demande à raxml de donner le fichier d'aide et vous devriez le voir à l'écran après avoir tapé la commande. Notez que le './' de la commande sur linux indique à l'ordinateur de chercher le programme dans le dossier actuel. Il est possible de mettre le logiciel dans le PATH du système qui permettrait d'ommettre le './'. Pour le reste de l'atelier, je vais ommettre le './' par simplicité, mais n'oubliez pas de toujours l'ajouter au début de la commande pour les utilisateurs mac et linux.
 
 
 
@@ -65,36 +63,46 @@ Il est maintenant possible de lancer la première analyse. Voici la commande à 
 raxml -s rbcl.fasta -n test1 -m GTRGAMMA -T 2 -p 123
 ```
 
-Décorticons un peu cette commande par option.
+Décorticons un peu cette commande option par option.
 
 1. L'option `-s` indique le fichier avec les séquences.
 1. L'option `-n` donne un nom à l'analyse. Utilisez un nom différent à chaque nouvelle analyse.
 1. L'option `-m` spécifie le modèle évolutif à utiliser. Plusieurs options sont possibles (se référer au manuel).
-1. L'option `-T` donne le nombre de coeurs de CPU à utiliser pour l'analyse. À modifier selon votre ordinateur. Je vous suggère d'utiliser un CPU de moins que le nombre de coeur de votre ordinateur pour vous permettre de continuer d'utiliser facilement l'ordinateur pendant les analyses.
-1. L'option `-p` donne une graine pour le générateur de nombre aléatoire pour la reconstruction de l'arbre de départ en parcimonie.
+1. L'option `-T` donne le nombre de coeurs de CPU à utiliser pour l'analyse. À modifier selon votre ordinateur. Je vous suggère d'utiliser un coeur de moins que le nombre de coeur de votre ordinateur pour vous permettre de continuer d'utiliser facilement l'ordinateur pendant les analyses.
+1. L'option `-p` donne une graine pour le générateur de nombres aléatoires pour la reconstruction de l'arbre de départ en parcimonie.
 
 >Notez que l'ordre des options dans la commande n'a pas d'importance!
 
 Normalement, RAxML devrait procéder à l'analyse très rapidement puisque c'est un petit jeu de données. Il va alors écrire dans le dossier plusieurs fichiers dont les noms commencent par `RAxML_` et se terminent par `.test1` (le nom de l'analyse).
 
-Le fichier `RAxML_bestTree.test1` contient le résultat (le meilleur arbre). Le fichier `RAxML_info.test1` contient les paramètres de l'analyse et la sortie. Il est utile de le vérifier si quelque chose n'a pas fonctionné. Le fichier `RAxML_log.test1` contient les logLikelihoods obtenus pendant l'analyse et le score final (dernière valeur du fichier).
+Le fichier `RAxML_bestTree.test1` contient le résultat (le meilleur arbre). Le fichier `RAxML_info.test1` contient les paramètres de l'analyse et les informations données par RAxML pendant l'analyse. Il est utile de vérifier ce fichier si quelque chose n'a pas fonctionné avec l'analyse pour en trouver le problème. Le fichier `RAxML_log.test1` contient les logLikelihoods obtenus pendant l'analyse et le score final (dernière valeur du fichier).
+
 
 ### Visualiser l'arbre
 
 Pour visualiser l'arbre phylogénétique, je vous recommande d'ajouter l'extension `.tre` à la fin du fichier d'arbre (`RAxML_bestTree.test1`). Vous pourrez ensuite l'ouvrir dans un logiciel de visualisation d'arbre phylogénétique comme [FigTree](http://tree.bio.ed.ac.uk/software/figtree/).
 
 
+
 ## Analyse 2: Différents arbres de départ
 
 Par défaut, RAxML va utiliser un arbre de parcimonie comme arbre de départ pour l'analyse de maximum de vraisemblance. Pour s'assurer que le résultat ne représente pas un optimum local dans l'espace de tous les arbres possibles, il est possible de faire plusieurs analyses à partir de différents arbres de départ. Une option pour faire ceci est de faire plusieurs arbres de parcimonie différents en randomisant l'ordre d'addition des espèces dans l'arbre de parcimonie. 
 
-Pour faire ceci, on utilise la commande `-#` qui spécifie un nombre d'analyses aléatoires à faire:
+Pour faire ceci, on utilise l'option `-#` qui spécifie un nombre d'analyses aléatoires à faire:
 
 ```
 raxml -s rbcl.fasta -n test2 -m GTRGAMMA -# 10 -T 2 -p 123
 ```
 
-L'analyse sera un peu plus longue parce qu'il s'agit en fait de 10 analyses indépendantes. RAxML va sauevr les résultats de chaque analyses avec l'extension `.test2.RUNX`, où `X` représente le numéro de run, mais il va aussi donner le meilleur arbre global dans le fichier 'bestTree': `RAxML_bestTree.test2`.
+L'analyse sera un peu plus longue parce qu'il s'agit en fait de 10 analyses indépendantes. RAxML va sauver les résultats de chaque analyse avec l'extension `.test2.RUNX`, où `X` représente le numéro de run, mais il va aussi donner le meilleur arbre global dans le fichier 'bestTree': `RAxML_bestTree.test2`.
+
+----
+
+Question:
+
+Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ différents est différent du précédent (test1)?
+
+----
 
 L'avantage d'utiliser la parcimonie c'est que c'est rapide et que l'analyse démarre d'un arbre qui n'est pas trop mauvais, ce qui demande moins de réarrangements de branches avant d'arriver à la solution. Cependant, il peut être intéressant de partir l'analyse de ML d'arbres plus différents. Pour ce faire, on peut demande à RAxML de faire plusieurs analyses à partir d'arbres complètement aléatoires.
 
@@ -104,7 +112,7 @@ La commande à utiliser pour ceci est `-d`. La commande spéciale va donc faire 
 raxml -s rbcl.fasta -d -n test3 -m GTRGAMMA -# 10 -T 2 -p 123
 ```
 
-Les fichiers de sortie seront similaires que ceux avec l'analyse précédente.
+Les fichiers de sortie seront similaires à ceux obtanus avec l'analyse précédente.
 
 
 ## Analyse 3: Bootstraping 
