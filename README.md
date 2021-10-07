@@ -97,11 +97,9 @@ raxml -s rbcl.fasta -n test2 -m GTRGAMMA -# 10 -T 2 -p 123
 L'analyse sera un peu plus longue parce qu'il s'agit en fait de 10 analyses indépendantes. RAxML va sauver les résultats de chaque analyse avec l'extension `.test2.RUNX`, où `X` représente le numéro de run, mais il va aussi donner le meilleur arbre global dans le fichier 'bestTree': `RAxML_bestTree.test2`.
 
 ----
-
 **Question 1**
 
 Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ différents est différent du précédent (test1)?
-
 ----
 
 L'avantage d'utiliser la parcimonie c'est que c'est rapide et que l'analyse démarre d'un arbre qui n'est pas trop mauvais, ce qui demande moins de réarrangements de branches avant d'arriver à la solution. Cependant, il peut être intéressant de partir l'analyse de ML d'arbres plus différents. Pour ce faire, on peut demande à RAxML de faire plusieurs analyses à partir d'arbres complètement aléatoires.
