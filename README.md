@@ -141,11 +141,18 @@ raxml -J MRE -z RAxML_bootstrap.test4 -n test5 -m GTRGAMMA -T 2
 
 L'option `-z` indique le fichier où se trouvent les arbres de bootstrap. Les résultats seront sauvés dans un fichier nommé 'RAxML_MajorityRuleExtendedConsensusTree.test5'.
 
-L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible de l'ouvrir avec le logiciel [Geneious](https://www.geneious.com). Les valeurs pour chaque groupement peuvent aussi être obtenues en regardant le fichier d'arbre consensus. Elles se trouvent entre crochets [] suite à chaque groupement.
+L'arbre ne peut pas être ouvert dans le logiciel FigTree, mais c'est possible de l'ouvrir avec le logiciel [Geneious](https://www.geneious.com). Les valeurs pour chaque groupement peuvent aussi être obtenues en regardant le fichier d'arbre consensus. Elles se trouvent entre crochets [ ] suite à chaque groupement.
+
+----
+
+#### Question 3
+
+Indiquez un groupement faiblement supporté (<70%) et un fortement supporté (>90%). De façon générale, est ce que les relations phylogénétiques présentes dans cet arbre semble robustes?
+
+----
 
 
-
-## Optionel: Utiliser RAxML en ligne
+## Exercice optionel: utiliser RAxML en ligne
 
 Aller sur le site web du [Swiss Institute for Bioinformatics](https://raxml-ng.vital-it.ch/)
 
