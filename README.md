@@ -104,6 +104,8 @@ Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ
 
 ----
 
+>Pour faciliter la comparaison des arbres, je vous sugère d'ordoner les noeuds de la même façon pours les deux arbres dans FigTree. Par défaut, l'ordre des noeuds est aléatoire. Dans le menu de gauche, ouvrir l'onglet 'Trees' et sélectionner 'Order nodes'. Voilà!
+
 L'avantage d'utiliser la parcimonie c'est que c'est rapide et que l'analyse démarre d'un arbre qui n'est pas trop mauvais, ce qui demande moins de réarrangements de branches avant d'arriver à la solution. Cependant, il peut être intéressant de partir l'analyse de ML d'arbres plus différents. Pour ce faire, on peut demande à RAxML de faire plusieurs analyses à partir d'arbres complètement aléatoires.
 
 La commande à utiliser pour ceci est `-d`. La commande spéciale va donc faire 10 analyses (option `-# 10`) à partir d'arbres aléatoires (option `-d`)
