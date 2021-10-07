@@ -98,7 +98,7 @@ L'analyse sera un peu plus longue parce qu'il s'agit en fait de 10 analyses ind�
 
 ----
 
-Question:
+**Question 1**
 
 Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ différents est différent du précédent (test1)?
 
@@ -113,6 +113,14 @@ raxml -s rbcl.fasta -d -n test3 -m GTRGAMMA -# 10 -T 2 -p 123
 ```
 
 Les fichiers de sortie seront similaires à ceux obtanus avec l'analyse précédente.
+
+----
+
+**Question 2**
+
+Est-ce que le meilleur arbre de cette analyse qui utilisait 10 arbres de départ complètement aléatoires est différent des précédents (test1 et test2)? Qu'est-ce que vous en concluez?
+
+----
 
 
 ## Analyse 3: Bootstraping 
